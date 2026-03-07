@@ -80,6 +80,18 @@ body {
   color: var(--aqua);
 }
 
+.typing-name {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  vertical-align: bottom;
+  border-right: 2px solid var(--aqua);
+  animation:
+    typing 3s steps(var(--chars)) 0.2s forwards,
+    caretBlink 0.75s step-end infinite;
+}
+
 .about-label {
   margin: 0;
   color: #7dd3fc;
@@ -223,6 +235,23 @@ body {
   font-size: clamp(1.8rem, 4.2vw, 3rem);
   line-height: 1.35;
   max-width: 22ch;
+}
+
+.hero-heading {
+  font-family: "Teko", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+  text-shadow:
+    0 0 0 rgba(103, 232, 249, 0),
+    0 0 0 rgba(56, 189, 248, 0);
+  animation: headingGlow 4.8s ease-in-out infinite;
+}
+
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
 }
 
 .hero p {
@@ -452,6 +481,49 @@ h3 {
   }
   100% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc(var(--chars) * 1ch);
+  }
+}
+
+@keyframes caretBlink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes headingFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes headingGlow {
+  0%,
+  100% {
+    color: #e2e8f0;
+    text-shadow:
+      0 0 0 rgba(103, 232, 249, 0),
+      0 0 0 rgba(56, 189, 248, 0);
+  }
+  50% {
+    color: #dff9ff;
+    text-shadow:
+      0 0 14px rgba(103, 232, 249, 0.35),
+      0 0 28px rgba(56, 189, 248, 0.22);
   }
 }
 

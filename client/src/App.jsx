@@ -11,6 +11,16 @@ const revealUp = {
   })
 };
 
+const headingWord = {
+  hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+  visible: (index = 0) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.55, ease: "easeOut", delay: 0.25 + index * 0.08 }
+  })
+};
+
 const contactModes = [
   { id: "whatsapp", label: "WhatsApp", icon: MessageCircle },
   { id: "linkedin", label: "LinkedIn", icon: Linkedin },
@@ -71,6 +81,8 @@ function App() {
   if (!profile) {
     return <div className="loading">Loading portfolio...</div>;
   }
+  const typedName = profile.name.toUpperCase();
+  const headingWords = profile.heading.split(" ");
 
   return (
     <div className="app-shell">
@@ -79,7 +91,10 @@ function App() {
           <div className="about-content">
             <p className="about-label">About Me</p>
             <h1>
-              HI, I'M <span>{profile.name.toUpperCase()}</span>
+              HI, I'M{" "}
+              <span className="typing-name" style={{ "--chars": typedName.length }}>
+                {typedName}
+              </span>
             </h1>
             <p className="role">{profile.role}</p>
             <p className="bio">{profile.shortBio}</p>
@@ -114,8 +129,26 @@ function App() {
       </motion.aside>
 
       <main className="main-panel">
-        <motion.section className="hero card" variants={revealUp} initial="hidden" animate="visible" custom={0.2}>
-          <h2>{profile.heading}</h2>
+        <motion.section
+          className="hero card"
+          variants={revealUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          custom={0.2}
+        >
+          <h2 className="hero-heading" aria-label={profile.heading}>
+            {headingWords.map((word, index) => (
+              <motion.span
+                key={`${word}-${index}`}
+                className="hero-word"
+                variants={headingWord}
+                custom={index}
+              >
+                {word}&nbsp;
+              </motion.span>
+            ))}
+          </h2>
           <p>{profile.availability}</p>
           <div className="stats">
             {profile.stats.map((item) => (
