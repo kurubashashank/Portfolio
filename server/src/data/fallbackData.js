@@ -7,7 +7,7 @@ const profile = {
   email: "kurubashashank5@gmail.com",
   phone: "+91 6301415646",
   location: "Guntakal, Andhra Pradesh, India",
-  availability: "Open to full-time Software / Full Stack roles",
+  availability: "Open to Full Stack roles",
   resume: {
     short: "c:\\Users\\kurub\\OneDrive\\Desktop\\Shashank.pdf",
     full: "c:\\Users\\kurub\\OneDrive\\Desktop\\Shashank Resume full.pdf"
