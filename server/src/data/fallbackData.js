@@ -1,6 +1,6 @@
 const profile = {
   name: "Kuruba Shashank",
-  role: "Full Stack Developer",
+  role: "Aspiring Software Engineer",
   heading: "Building future-ready products with MERN, data, and AI-assisted workflows.",
   shortBio:
     "Full Stack Developer focused on production-grade web applications, clean APIs, and modern UI systems that convert ideas into reliable business products.",
@@ -36,7 +36,7 @@ const profile = {
   ],
   stats: [
     { label: "GPA", value: "8.11/10" },
-    { label: "Focus", value: "Full Stack" },
+    { label: "Focus", value: "Full Stack & Artificial Intelligence" },
     { label: "Graduation", value: "2026" }
   ]
 };
